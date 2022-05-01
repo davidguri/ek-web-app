@@ -13,13 +13,12 @@ export default function Home() {
       <main className={styles.screen}>
         <section className={styles.sidebar}>
           <div className={styles.accountInfo}>
-            <div className={styles.imgContainer}>
-              <img
-                src="https://img.icons8.com/fluency/344/user-male-circle.png"
-                alt="acc-img"
-                className={styles.accountImg}
-              />
-            </div>
+            <img
+              src="https://img.icons8.com/fluency/344/user-male-circle.png"
+              alt="acc-img"
+              className={styles.accountImg}
+            />
+            <p className={styles.name}>[account]</p>
           </div>
           <div className={styles.tabs}>
             <div className={styles.tabsTop}>Hi</div>
@@ -46,7 +45,7 @@ export default function Home() {
         * {
           box-sizing: border-box;
           color: white;
-          background-color: black;
+          background-color: #212b38;
         }
       `}</style>
     </div>
