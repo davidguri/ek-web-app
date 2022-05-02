@@ -1,16 +1,19 @@
 .container {
     width: 100%;
+    height: 100%;
 }
 
 .screen {
     width: 100%;
+    height: 100%;
     display: flex;
     flex-direction: row;
     align-items: center;
 }
 
 .sidebar {
-    width: 25%;
+    width: 21.5%;
+    height: 100vh;
     flex: 1;
     display: flex;
     flex-direction: column;
@@ -18,12 +21,14 @@
     padding: 20px;
     border-top-right-radius: 25px; 
     border-bottom-right-radius: 25px;
-    /* Box-shadow */ 
+    box-shadow: 6px 0 8px 0 rgba(0, 0, 0, 0.2);
 }
 
 .mainContent {
-    width: 75%;
-    padding: 20px;
+    width: 78.5%;
+    padding: 30px;
+    display: flex;
+    flex-direction: row;
     border: 3px solid blue;
 }
 
@@ -40,4 +45,70 @@
 .name {
     font-size: 20px;
     font-weight: bold;
+    margin: 0;
+    padding: 0;
+}
+
+.tabs,
+.tabsTop,
+.tabsBottom {
+    width: 100%;
+}
+
+.tabs {
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.tabsTop {
+    top: 0;
+    margin-bottom: 30px;
+}
+
+.tabsBottom {
+    bottom: 0;
+    margin-top: 30px;
+}
+
+.tabButton {
+    width: 80%;
+    margin-inline: 10%;
+    margin-block: 3%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border-radius: 25px;
+    border: 4px solid #4fffe3;
+    padding-inline: 10px;
+    background: rgba(79, 255, 227, 0.1);
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+}
+
+.tabButton:hover {
+    box-shadow: 2px 8px 16px 0 rgba(79, 255, 227, 0.1);
+    cursor: pointer;
+    width: 82%;
+    margin-inline: 9%;
+}
+
+.buttonText {
+    font-size: 14px;
+    margin-left: 10px;
+    font-weight: 700;
+    background: transparent;
+}
+
+.tabIcon {
+    background: transparent;
+}
+
+.mainLeft,
+.mainRight {
+    flex: 1;
+    width: 50%;
+    padding: 10px;
+    border: 3px solid yellow;
 }
