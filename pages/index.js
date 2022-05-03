@@ -1,12 +1,71 @@
 import Head from "next/head";
+import Link from "next/link";
 
 import styles from "./index.module.css";
 
+var months = [
+  "January",
+  "February",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October",
+  "November",
+  "December",
+];
+
+const nth = function (d) {
+  if (d > 3 && d < 21) return "th";
+  switch (d % 10) {
+    case 1:
+      return "st";
+    case 2:
+      return "nd";
+    case 3:
+      return "rd";
+    default:
+      return "th";
+  }
+};
+
+var days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+var dt = new Date();
+var date =
+  days[dt.getDay()] +
+  ", " +
+  months[dt.getMonth()] +
+  " " +
+  dt.getDate() +
+  nth(dt.getDate());
+
+function updateTime() {
+  var hours = dt.getHours();
+  var minutes = dt.getMinutes();
+  if (minutes < 10) {
+    minutes = "0" + minutes;
+  }
+  var time = hours + ":" + minutes + " ";
+  if (hours > 11) {
+    time += "PM";
+  } else {
+    time += "AM";
+  }
+  document.getElementById("timeText").innerHTML = time;
+}
+setInterval(updateTime, 1000);
+
 export default function Home() {
   return (
-    <div className={styles.container}>
+    <div
+      className={styles.container}
+      onload="updateClock(); setInterval('updateClock()', 1000 )"
+    >
       <Head>
-        <title>Create Next App</title>
+        <title>EK-Admin</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
@@ -18,14 +77,16 @@ export default function Home() {
               alt="acc-img"
               className={styles.accountImg}
             />
-            <p className={styles.name}>[account]</p>
+            <p className={styles.name}>Jane Doe</p>
           </div>
           <section className={styles.tabs}>
             <section className={styles.tabsTop}>
-              <div className={styles.tabButton}>
-                <ion-icon name="person-circle" className={styles.tabIcon} />
-                <p className={styles.buttonText}>Account Info</p>
-              </div>
+              <Link href="/account-info">
+                <div className={styles.tabButton}>
+                  <ion-icon name="person-circle" className={styles.tabIcon} />
+                  <p className={styles.buttonText}>Account Info</p>
+                </div>
+              </Link>
               <div className={styles.tabButton}>
                 <ion-icon name="calendar" className={styles.tabIcon} />
                 <p className={styles.buttonText}>Schedule</p>
@@ -56,11 +117,15 @@ export default function Home() {
           <section className={styles.mainLeft}>
             <div className={styles.timeContainer}>
               <div className={styles.time}>
-                <p id="time-text">TI:ME</p>
+                <p id="timeText" className={styles.timeText}></p>
               </div>
               <div className={styles.additionalInfo}>
-                <p id="period">period</p>
-                <p id="date">date</p>
+                <p id="period" className={styles.period}>
+                  [period]
+                </p>
+                <p id="date" className={styles.date}>
+                  {date}
+                </p>
               </div>
             </div>
           </section>
